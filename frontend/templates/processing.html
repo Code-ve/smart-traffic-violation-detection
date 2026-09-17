@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block title %}Processing — TrafficVision{% endblock %}
+
+{% block content %}
+<section class="page-header">
+    <h1>Processing Video</h1>
+    <p>Session: <code id="session-id-display">{{ session_id }}</code></p>
+</section>
+
+<div class="processing-container">
+    <div class="card processing-card" id="processing-status-card">
+        <h3 class="card-title">🎬 Processing Status</h3>
+        <div class="progress-bar large">
+            <div class="progress-fill" id="video-progress-fill" style="width: 0%"></div>
+        </div>
+        <p class="progress-text" id="video-progress-text">Starting...</p>
+
+        <div class="stats-grid" id="processing-stats">
+            <div class="stat-item">
+                <span class="stat-value" id="stat-frame">0</span>
+                <span class="stat-label">Frame</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-value" id="stat-fps">0</span>
+                <span class="stat-label">FPS</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-value" id="stat-detections">0</span>
+                <span class="stat-label">Detections</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-value" id="stat-vehicles">0</span>
+                <span class="stat-label">Vehicles</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-value" id="stat-violations">0</span>
+                <span class="stat-label">Violations</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="card" id="session-summary-card" style="display:none">
+        <h3 class="card-title">✅ Processing Complete</h3>
+        <div class="summary-content" id="session-summary"></div>
+        <div class="summary-actions">
+            <a href="/violations" class="btn btn-primary" id="btn-view-violations">View Violations</a>
+            <a href="/analytics" class="btn btn-secondary" id="btn-view-analytics-link">View Analytics</a>
+            <a href="/upload" class="btn btn-secondary" id="btn-new-upload">New Upload</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    const SESSION_ID = "{{ session_id }}";
+</script>
+<script src="/static/js/processing.js"></script>
+{% endblock %}

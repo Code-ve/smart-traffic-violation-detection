@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% block title %}TrafficVision — Smart Traffic Violation Detection{% endblock %}
+
+{% block content %}
+<section class="hero" id="hero-section">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+        <div class="hero-badge">Computer Vision Project</div>
+        <h1 class="hero-title">
+            Smart Traffic Violation<br>
+            <span class="gradient-text">Detection & Analytics</span>
+        </h1>
+        <p class="hero-description">
+            An academic prototype demonstrating real-time vehicle detection, tracking,
+            and traffic violation identification using YOLO object detection and OpenCV.
+        </p>
+        <div class="hero-actions">
+            <a href="/upload" class="btn btn-primary btn-lg" id="btn-start-analysis">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                Start Analysis
+            </a>
+            <a href="/analytics" class="btn btn-secondary btn-lg" id="btn-view-dashboard">
+                View Dashboard
+            </a>
+        </div>
+    </div>
+</section>
+
+<section class="features" id="features-section">
+    <h2 class="section-title">Core Capabilities</h2>
+    <div class="features-grid">
+        <div class="feature-card" id="feature-detection">
+            <div class="feature-icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="12" cy="12" r="3"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></svg>
+            </div>
+            <h3>Object Detection</h3>
+            <p>YOLO-powered real-time detection of vehicles, motorcycles, buses, trucks, and pedestrians with confidence scoring.</p>
+        </div>
+        <div class="feature-card" id="feature-tracking">
+            <div class="feature-icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12h4M18 12h4M12 2v4M12 18v4"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+            </div>
+            <h3>Vehicle Tracking</h3>
+            <p>ByteTrack-based multi-object tracking assigns persistent IDs and records vehicle trajectories across frames.</p>
+        </div>
+        <div class="feature-card" id="feature-violations">
+            <div class="feature-icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            </div>
+            <h3>Violation Detection</h3>
+            <p>Rule-based engine detecting red-light violations, speed/zone violations, and configurable custom rules.</p>
+        </div>
+        <div class="feature-card" id="feature-evidence">
+            <div class="feature-icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+            </div>
+            <h3>Evidence Capture</h3>
+            <p>Automatic evidence image generation with bounding boxes, violation labels, track IDs, and timestamps.</p>
+        </div>
+        <div class="feature-card" id="feature-analytics">
+            <div class="feature-icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+            </div>
+            <h3>Analytics Dashboard</h3>
+            <p>Interactive charts and statistics powered by real processing data — vehicle counts, violation trends, and more.</p>
+        </div>
+        <div class="feature-card" id="feature-evaluation">
+            <div class="feature-icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </div>
+            <h3>Model Evaluation</h3>
+            <p>Precision, recall, mAP metrics and inference benchmarking to assess detection model performance.</p>
+        </div>
+    </div>
+</section>
+
+<section class="pipeline-section" id="pipeline-section">
+    <h2 class="section-title">Computer Vision Pipeline</h2>
+    <div class="pipeline">
+        <div class="pipeline-step"><span class="step-num">1</span><span class="step-label">Input</span></div>
+        <div class="pipeline-arrow">→</div>
+        <div class="pipeline-step"><span class="step-num">2</span><span class="step-label">Preprocess</span></div>
+        <div class="pipeline-arrow">→</div>
+        <div class="pipeline-step"><span class="step-num">3</span><span class="step-label">Detect</span></div>
+        <div class="pipeline-arrow">→</div>
+        <div class="pipeline-step"><span class="step-num">4</span><span class="step-label">Track</span></div>
+        <div class="pipeline-arrow">→</div>
+        <div class="pipeline-step"><span class="step-num">5</span><span class="step-label">Violations</span></div>
+        <div class="pipeline-arrow">→</div>
+        <div class="pipeline-step"><span class="step-num">6</span><span class="step-label">Analytics</span></div>
+    </div>
+</section>
+{% endblock %}

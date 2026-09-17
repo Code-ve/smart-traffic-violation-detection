@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Smart Traffic Violation Detection & Analytics System - Computer Vision project for detecting traffic violations using YOLO object detection.">
+    <title>{% block title %}Smart Traffic System{% endblock %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    {% block head %}{% endblock %}
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="main-nav">
+        <div class="nav-brand">
+            <div class="nav-logo">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                    <circle cx="16" cy="16" r="14" stroke="url(#grad)" stroke-width="2.5"/>
+                    <path d="M10 20 L16 10 L22 20 Z" fill="url(#grad)" opacity="0.8"/>
+                    <circle cx="16" cy="17" r="2" fill="#0f0f1a"/>
+                    <defs>
+                        <linearGradient id="grad" x1="0" y1="0" x2="32" y2="32">
+                            <stop offset="0%" stop-color="#6366f1"/>
+                            <stop offset="100%" stop-color="#06b6d4"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </div>
+            <span class="nav-title">TrafficVision</span>
+        </div>
+        <div class="nav-links">
+            <a href="/" class="nav-link" id="nav-home">Home</a>
+            <a href="/upload" class="nav-link" id="nav-upload">Analyze</a>
+            <a href="/violations" class="nav-link" id="nav-violations">Violations</a>
+            <a href="/analytics" class="nav-link" id="nav-analytics">Analytics</a>
+            <a href="/evaluation" class="nav-link" id="nav-evaluation">Evaluation</a>
+        </div>
+        <button class="nav-mobile-toggle" id="mobile-toggle" aria-label="Toggle navigation">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <!-- Main content -->
+    <main class="main-content">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <p>&copy; 2024 Smart Traffic Violation Detection & Analytics System</p>
+            <p class="footer-sub">Academic Prototype — VITyarthi Computer Vision Project</p>
+        </div>
+    </footer>
+
+    <!-- Shared JS -->
+    <script src="/static/js/app.js"></script>
+    {% block scripts %}{% endblock %}
+
+    <script>
+        // Mobile nav toggle
+        document.getElementById('mobile-toggle')?.addEventListener('click', () => {
+            document.querySelector('.nav-links')?.classList.toggle('active');
+        });
+        // Highlight current nav link
+        const path = window.location.pathname;
+        document.querySelectorAll('.nav-link').forEach(link => {
+            if (link.getAttribute('href') === path) link.classList.add('active');
+        });
+    </script>
+</body>
+</html>

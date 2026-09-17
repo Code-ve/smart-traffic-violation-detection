@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+{% block title %}Model Evaluation — TrafficVision{% endblock %}
+
+{% block content %}
+<section class="page-header">
+    <h1>Model Evaluation</h1>
+    <p>Detection model performance metrics and inference benchmarks.</p>
+</section>
+
+<div class="evaluation-container">
+    <!-- Model Info -->
+    <div class="card" id="model-info-card">
+        <h3 class="card-title">🧠 Model Information</h3>
+        <div class="model-info" id="model-info">
+            <p class="loading-text">Loading model information...</p>
+        </div>
+    </div>
+
+    <!-- Evaluation Metrics -->
+    <div class="card" id="eval-metrics-card">
+        <h3 class="card-title">📊 Evaluation Metrics</h3>
+        <div class="metrics-grid" id="eval-metrics">
+            <div class="metric-card">
+                <span class="metric-value" id="metric-precision">—</span>
+                <span class="metric-label">Precision</span>
+                <span class="metric-desc">Correct detections / Total detections</span>
+            </div>
+            <div class="metric-card">
+                <span class="metric-value" id="metric-recall">—</span>
+                <span class="metric-label">Recall</span>
+                <span class="metric-desc">Correct detections / Total ground truth</span>
+            </div>
+            <div class="metric-card">
+                <span class="metric-value" id="metric-map50">—</span>
+                <span class="metric-label">mAP@0.5</span>
+                <span class="metric-desc">Mean Average Precision at IoU 0.5</span>
+            </div>
+            <div class="metric-card">
+                <span class="metric-value" id="metric-map50-95">—</span>
+                <span class="metric-label">mAP@0.5:0.95</span>
+                <span class="metric-desc">Mean AP across IoU thresholds</span>
+            </div>
+        </div>
+        <p class="eval-note" id="eval-note"></p>
+    </div>
+
+    <!-- Inference Benchmark -->
+    <div class="card" id="benchmark-card">
+        <h3 class="card-title">⚡ Inference Benchmark</h3>
+        <button class="btn btn-primary btn-sm" id="btn-run-benchmark">Run Benchmark</button>
+        <div class="benchmark-results" id="benchmark-results" style="display:none">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-value" id="bench-avg-ms">—</span>
+                    <span class="stat-label">Avg Inference (ms)</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value" id="bench-fps">—</span>
+                    <span class="stat-label">FPS</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value" id="bench-resolution">—</span>
+                    <span class="stat-label">Resolution</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value" id="bench-num-images">—</span>
+                    <span class="stat-label">Test Images</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dataset Info -->
+    <div class="card" id="dataset-info-card">
+        <h3 class="card-title">📁 Dataset Information</h3>
+        <div class="dataset-info">
+            <h4>Recommended Dataset</h4>
+            <p>This system works with COCO-format object detection datasets. For traffic-specific evaluation, we recommend:</p>
+            <ul>
+                <li><strong>COCO 2017</strong> — General object detection with vehicle classes (car, truck, bus, motorcycle, bicycle)</li>
+                <li><strong>UA-DETRAC</strong> — Multi-object detection and tracking dataset for traffic scenarios</li>
+                <li><strong>BDD100K</strong> — Berkeley DeepDrive dataset with diverse driving scenarios</li>
+            </ul>
+            <h4>Dataset Format</h4>
+            <p>The evaluation script expects a YOLO-format dataset YAML file. Example structure:</p>
+            <pre><code>path: /path/to/dataset
+train: images/train
+val: images/val
+names:
+  0: person
+  1: bicycle
+  2: car
+  3: motorcycle
+  5: bus
+  7: truck</code></pre>
+            <h4>Running Evaluation</h4>
+            <pre><code>python scripts/evaluate_model.py --dataset path/to/data.yaml</code></pre>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="/static/js/evaluation.js"></script>
+{% endblock %}

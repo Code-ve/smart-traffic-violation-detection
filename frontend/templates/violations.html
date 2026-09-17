@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% block title %}Violations — TrafficVision{% endblock %}
+
+{% block content %}
+<section class="page-header">
+    <h1>Violation Records</h1>
+    <p>Browse and manage detected traffic violations.</p>
+</section>
+
+<div class="violations-container">
+    <!-- Filters -->
+    <div class="card filter-card" id="filter-panel">
+        <div class="filter-grid">
+            <div class="filter-item">
+                <label for="filter-type">Violation Type</label>
+                <select id="filter-type">
+                    <option value="">All Types</option>
+                    <option value="RED_LIGHT_VIOLATION">Red Light</option>
+                    <option value="SPEED_ZONE_VIOLATION">Speed / Zone</option>
+                    <option value="HELMET_VIOLATION">Helmet</option>
+                </select>
+            </div>
+            <div class="filter-item">
+                <label for="filter-vehicle">Vehicle Type</label>
+                <select id="filter-vehicle">
+                    <option value="">All Vehicles</option>
+                    <option value="car">Car</option>
+                    <option value="motorcycle">Motorcycle</option>
+                    <option value="bus">Bus</option>
+                    <option value="truck">Truck</option>
+                    <option value="bicycle">Bicycle</option>
+                </select>
+            </div>
+            <div class="filter-item">
+                <label for="filter-status">Status</label>
+                <select id="filter-status">
+                    <option value="">All Statuses</option>
+                    <option value="Detected">Detected</option>
+                    <option value="Reviewed">Reviewed</option>
+                    <option value="Resolved">Resolved</option>
+                </select>
+            </div>
+            <div class="filter-item filter-action">
+                <button class="btn btn-primary btn-sm" id="btn-apply-filters">Apply Filters</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Violations Table -->
+    <div class="card" id="violations-table-card">
+        <div class="table-responsive">
+            <table class="data-table" id="violations-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Timestamp</th>
+                        <th>Type</th>
+                        <th>Vehicle</th>
+                        <th>Track ID</th>
+                        <th>Confidence</th>
+                        <th>Frame</th>
+                        <th>Status</th>
+                        <th>Evidence</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="violations-body">
+                    <tr><td colspan="10" class="empty-state">No violations found. Upload and process a video to detect violations.</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Evidence Modal -->
+    <div class="modal-overlay" id="evidence-modal" style="display:none">
+        <div class="modal-content">
+            <button class="modal-close" id="btn-close-modal">&times;</button>
+            <h3 id="modal-title">Evidence Image</h3>
+            <img id="modal-image" alt="Violation evidence" class="evidence-image">
+            <div class="modal-details" id="modal-details"></div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="/static/js/violations.js"></script>
+{% endblock %}

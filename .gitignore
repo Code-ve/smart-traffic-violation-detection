@@ -1,0 +1,59 @@
+# ── Python ────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+*.egg
+dist/
+build/
+
+# ── Virtual environment ──────────────────────────────────────────────────
+.venv/
+venv/
+env/
+
+# ── Environment variables ────────────────────────────────────────────────
+.env
+
+# ── IDE ───────────────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# ── OS ────────────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── Data (generated at runtime) ──────────────────────────────────────────
+data/output/
+data/evidence/
+data/input/*
+!data/input/.gitkeep
+data/*.db
+
+# ── Model weights (large binary files) ───────────────────────────────────
+models/*.pt
+models/*.onnx
+models/*.engine
+!models/.gitkeep
+
+# ── Logs ──────────────────────────────────────────────────────────────────
+*.log
+logs/
+
+# ── Test / Coverage ──────────────────────────────────────────────────────
+.pytest_cache/
+htmlcov/
+.coverage
+coverage.xml
+
+# ── Misc ──────────────────────────────────────────────────────────────────
+*.mp4
+*.avi
+*.mov
+*.mkv

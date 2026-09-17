@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% block title %}Upload & Analyze — TrafficVision{% endblock %}
+
+{% block content %}
+<section class="page-header">
+    <h1>Upload & Analyze</h1>
+    <p>Upload a traffic image or video for Computer Vision analysis.</p>
+</section>
+
+<div class="upload-container" id="upload-section">
+    <!-- Configuration Panel -->
+    <div class="card config-card" id="config-panel">
+        <h3 class="card-title">⚙️ Configuration</h3>
+        <div class="config-grid">
+            <div class="config-item">
+                <label for="signal-state">Signal State</label>
+                <select id="signal-state">
+                    <option value="GREEN">🟢 GREEN</option>
+                    <option value="RED">🔴 RED</option>
+                </select>
+            </div>
+            <div class="config-item">
+                <label for="stop-line-y">Stop Line Y (px)</label>
+                <input type="number" id="stop-line-y" value="400" min="0" max="2000">
+            </div>
+            <div class="config-item">
+                <label for="confidence-threshold">Confidence</label>
+                <input type="range" id="confidence-threshold" min="0.1" max="1.0" step="0.05" value="0.4">
+                <span class="range-value" id="conf-value">0.40</span>
+            </div>
+        </div>
+        <button class="btn btn-secondary btn-sm" id="btn-apply-config">Apply Config</button>
+    </div>
+
+    <!-- Upload Zone -->
+    <div class="card upload-card" id="upload-zone">
+        <div class="dropzone" id="dropzone">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.5">
+                <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+                <polyline points="17 8 12 3 7 8"/>
+                <line x1="12" y1="3" x2="12" y2="15"/>
+            </svg>
+            <h3>Drag & drop a file here</h3>
+            <p>or click to browse</p>
+            <p class="dropzone-formats">Supported: JPG, PNG, BMP, WEBP, MP4, AVI, MOV, MKV</p>
+            <input type="file" id="file-input" accept=".jpg,.jpeg,.png,.bmp,.webp,.mp4,.avi,.mov,.mkv,.wmv" hidden>
+        </div>
+        <div class="upload-progress" id="upload-progress" style="display:none">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill"></div>
+            </div>
+            <p class="progress-text" id="progress-text">Uploading...</p>
+        </div>
+    </div>
+
+    <!-- Results Panel -->
+    <div class="card results-card" id="results-panel" style="display:none">
+        <h3 class="card-title">📊 Detection Results</h3>
+        <div class="results-stats" id="results-stats"></div>
+        <div class="results-image-container" id="results-image-container">
+            <img id="results-image" alt="Annotated result" style="display:none">
+        </div>
+        <div class="results-table-container" id="results-table-container">
+            <table class="data-table" id="detections-table">
+                <thead>
+                    <tr>
+                        <th>Class</th>
+                        <th>Confidence</th>
+                        <th>Track ID</th>
+                        <th>Position</th>
+                    </tr>
+                </thead>
+                <tbody id="detections-body"></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="/static/js/upload.js"></script>
+{% endblock %}

@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% block title %}Analytics — TrafficVision{% endblock %}
+
+{% block content %}
+<section class="page-header">
+    <h1>Analytics Dashboard</h1>
+    <p>Traffic and violation analytics from real processing data.</p>
+</section>
+
+<div class="analytics-container">
+    <!-- Session selector -->
+    <div class="card" id="session-selector-card">
+        <div class="filter-grid">
+            <div class="filter-item">
+                <label for="analytics-session">Session</label>
+                <select id="analytics-session">
+                    <option value="">All Sessions (Global)</option>
+                </select>
+            </div>
+            <div class="filter-item filter-action">
+                <button class="btn btn-primary btn-sm" id="btn-load-analytics">Load Analytics</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Summary cards -->
+    <div class="stats-grid summary-grid" id="summary-cards">
+        <div class="stat-card">
+            <span class="stat-value" id="analytics-total-vehicles">—</span>
+            <span class="stat-label">Total Vehicles</span>
+        </div>
+        <div class="stat-card">
+            <span class="stat-value" id="analytics-unique-vehicles">—</span>
+            <span class="stat-label">Unique Tracked</span>
+        </div>
+        <div class="stat-card">
+            <span class="stat-value" id="analytics-total-violations">—</span>
+            <span class="stat-label">Total Violations</span>
+        </div>
+        <div class="stat-card accent">
+            <span class="stat-value" id="analytics-violation-pct">—</span>
+            <span class="stat-label">Violation Rate</span>
+        </div>
+    </div>
+
+    <!-- Charts -->
+    <div class="charts-grid">
+        <div class="card chart-card" id="chart-vehicles-card">
+            <h3 class="card-title">Vehicles by Type</h3>
+            <canvas id="chart-vehicles"></canvas>
+        </div>
+        <div class="card chart-card" id="chart-violations-card">
+            <h3 class="card-title">Violations by Type</h3>
+            <canvas id="chart-violations"></canvas>
+        </div>
+        <div class="card chart-card wide" id="chart-timeline-card">
+            <h3 class="card-title">Traffic Volume Over Time</h3>
+            <canvas id="chart-timeline"></canvas>
+        </div>
+        <div class="card chart-card" id="chart-confidence-card">
+            <h3 class="card-title">Detection Confidence Distribution</h3>
+            <canvas id="chart-confidence"></canvas>
+        </div>
+    </div>
+
+    <!-- Sessions table -->
+    <div class="card" id="sessions-card">
+        <h3 class="card-title">Processing Sessions</h3>
+        <div class="table-responsive">
+            <table class="data-table" id="sessions-table">
+                <thead>
+                    <tr>
+                        <th>Session</th>
+                        <th>File</th>
+                        <th>Status</th>
+                        <th>Vehicles</th>
+                        <th>Violations</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody id="sessions-body">
+                    <tr><td colspan="6" class="empty-state">No sessions yet.</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="/static/js/analytics.js"></script>
+{% endblock %}
