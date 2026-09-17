@@ -344,10 +344,11 @@ This project demonstrates practical application of:
 
 See `docs/vityarthi_mapping.md` for the complete evaluation requirement mapping.
 
-## Authors
-
-Smart Traffic Team — VITyarthi Computer Vision Project
 
 ## License
 
 MIT License — see [LICENSE](LICENSE) for details.
+
+##MADE BY:
+  Name: Pradyumn Krishna Arya
+  Reg No.: 24BAI10668
