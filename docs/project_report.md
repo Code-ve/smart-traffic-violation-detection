@@ -226,18 +226,14 @@ The web interface includes 6 pages:
 ---
 
 ## 16. Screenshots / Results
+<img width="1617" height="877" alt="image" src="https://github.com/user-attachments/assets/172c9ced-3f6d-4800-a159-31987e273b70" />
+<img width="832" height="693" alt="image" src="https://github.com/user-attachments/assets/5ac7fa17-88de-4b6d-9895-8b244d9ac833" />
+<img width="1327" height="775" alt="image" src="https://github.com/user-attachments/assets/4398765a-b468-4127-a1d8-1578b8592e23" />
+<img width="1337" height="857" alt="image" src="https://github.com/user-attachments/assets/14dd327e-2d97-41a9-a710-95d7a6382606" />
 
-> **Placeholder**: Insert screenshots after running the application with a traffic video.
->
-> Recommended screenshots:
-> - Home page
-> - Upload page with detected image
-> - Processing page with live stats
-> - Violations table with evidence
-> - Analytics dashboard with charts
-> - Evaluation page with metrics
 
----
+
+
 
 ## 17. Testing Approach
 
